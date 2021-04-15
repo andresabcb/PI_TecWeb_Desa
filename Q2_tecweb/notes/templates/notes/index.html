@@ -1,0 +1,27 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+  <img class="logo" src="{% static 'notes/img/dory.png' %}" />
+  <span class="subtitle">Sou a Dory - tenho perda de memória recente</span>
+</div>
+
+<main class="container">
+<form method="post" class="form-card">
+  {% csrf_token %}
+  <label for="memo" class="form-card-title">Memória</label>
+  <textarea id="memo" class="autoresize" name="memo" placeholder="Digite aqui sua memória..."></textarea>
+    <button class="btn" type="submit">Enviar</button>
+</form>
+
+<ul class="card-container">
+    <li class="card">
+      <div class="card-title">
+        <p>{{ note.memo }}</p></div>
+    </li>
+  </ul>
+
+</main>
+<script type="text/javascript" src="{% static 'notes/js/getit.js' %}"></script>
+{% endblock %}
